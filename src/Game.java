@@ -12,7 +12,7 @@ public class Game {
     private void setUpGame() {
         for (int i = 0; i < 10; i++) {
             Ship ship = new Ship();
-            ship.setLocationDeck(numberOfDeckAtShipList[i]);
+            ship.setLocationShip(numberOfDeckAtShipList[i]);
             ship.setName(namesShipList.get(random.nextInt(namesShipList.size())));
             fleet.add(ship);
         }
@@ -81,6 +81,13 @@ public class Game {
         gamePlayer2.startPlaying();
         gamePlayer2.printGame();
         enterPlayer2.printGrid();
+
+
+        // NewGame
+
+        Player player1 = new Player();
+        player1.setName("Bob");
+        player1.setFleet();
 
     }
 

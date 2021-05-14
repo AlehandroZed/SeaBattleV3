@@ -10,7 +10,7 @@ public class Ship {
         this.name = name;
     }
 
-    public void setLocationDeck(int numberOfDecks) {
+    public void setLocationShip(int numberOfDecks) {
         for (int i = 0; i < numberOfDecks; i++) {
             Deck deck = new Deck();
             deck.setCoordinates();
