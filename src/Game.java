@@ -4,17 +4,16 @@ import java.util.List;
 import java.util.Random;
 
 public class Game {
-    Enter enter = new Enter();
     Random random = new Random();
     List<Ship> fleet = new ArrayList<>();
-    int[] deck = new int[]{4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
-    List<String> names = new ArrayList<>(Arrays.asList("Black Perl", "Titanic", "Aurora", "Pharaoh", "beda", "Duncan", "Nautilus", "Pilgrim", "Secret", "Ghost"));
+    int[] numberOfDeckAtShipList = new int[]{4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
+    List<String> namesShipList = new ArrayList<>(Arrays.asList("Black Perl", "Titanic", "Aurora", "Pharaoh", "beda", "Duncan", "Nautilus", "Pilgrim", "Secret", "Ghost"));
 
     private void setUpGame() {
         for (int i = 0; i < 10; i++) {
             Ship ship = new Ship();
-            ship.setLocationDeck(deck[i]);
-            ship.setName(names.get(random.nextInt(names.size())));
+            ship.setLocationDeck(numberOfDeckAtShipList[i]);
+            ship.setName(namesShipList.get(random.nextInt(namesShipList.size())));
             fleet.add(ship);
         }
         fleet.get(8).decks.get(0).coordinates = new int[]{2, 2};// один корабль с координатами 2,2//TEST
@@ -69,15 +68,19 @@ public class Game {
     public static void main(String[] args) {
         System.out.println("\n----------------------------Player 1\n");
         Game gamePlayer1 = new Game();
+        Enter enterPlayer1 = new Enter();
         gamePlayer1.setUpGame();
         gamePlayer1.startPlaying();
         gamePlayer1.printGame();
+        enterPlayer1.printGrid();
 
         System.out.println("\n-----------------------------Player 2\n");
         Game gamePlayer2 = new Game();
+        Enter enterPlayer2 = new Enter();
         gamePlayer2.setUpGame();
         gamePlayer2.startPlaying();
         gamePlayer2.printGame();
+        enterPlayer2.printGrid();
 
     }
 

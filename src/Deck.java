@@ -18,5 +18,7 @@ public class Deck {
     public int[] getCoordinates() {
         return coordinates;
     }
+
+
 }
 
