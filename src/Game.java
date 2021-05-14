@@ -6,13 +6,14 @@ import java.util.Random;
 public class Game {
     Random random = new Random();
     List<Ship> fleet = new ArrayList<>();
+    Enter enter =new Enter();
     int[] numberOfDeckAtShipList = new int[]{4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
     List<String> namesShipList = new ArrayList<>(Arrays.asList("Black Perl", "Titanic", "Aurora", "Pharaoh", "beda", "Duncan", "Nautilus", "Pilgrim", "Secret", "Ghost"));
 
     private void setUpGame() {
         for (int i = 0; i < 10; i++) {
             Ship ship = new Ship();
-            ship.setLocationDeck(numberOfDeckAtShipList[i]);
+            ship.setLocationDeck(numberOfDeckAtShipList[i], enter);
             ship.setName(namesShipList.get(random.nextInt(namesShipList.size())));
             fleet.add(ship);
         }
@@ -53,6 +54,7 @@ public class Game {
                     if (Arrays.equals(deck.getCoordinates(), enter)) {
                         ship.decks.remove(deck);
                         result = "Попал!";
+                        this.enter.setAHit(enter);
                         if (ship.decks.size() == 0) {
                             result = "Корабль " + ship.name + " потоплен!";
                             fleet.remove(ship);
@@ -68,19 +70,20 @@ public class Game {
     public static void main(String[] args) {
         System.out.println("\n----------------------------Player 1\n");
         Game gamePlayer1 = new Game();
-        Enter enterPlayer1 = new Enter();
+        //Enter enterPlayer1 = new Enter();
         gamePlayer1.setUpGame();
         gamePlayer1.startPlaying();
         gamePlayer1.printGame();
-        enterPlayer1.printGrid();
+        gamePlayer1.enter.printGrid();
+
 
         System.out.println("\n-----------------------------Player 2\n");
         Game gamePlayer2 = new Game();
-        Enter enterPlayer2 = new Enter();
+        //Enter enterPlayer2 = new Enter();
         gamePlayer2.setUpGame();
         gamePlayer2.startPlaying();
         gamePlayer2.printGame();
-        enterPlayer2.printGrid();
+        gamePlayer2.enter.printGrid();
 
     }
 

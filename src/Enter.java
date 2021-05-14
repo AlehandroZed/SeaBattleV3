@@ -3,10 +3,13 @@ import java.util.Random;
 
 public class Enter {
     static int SIZE = 10;
-    static int[][] grid = new int[SIZE][SIZE];
-    ArrayList<Integer[][]> e = new ArrayList<>();
+    int[][] grid = new int[SIZE][SIZE];
 
-    static {
+    public Enter() {
+        emptyGrid();
+    }
+
+    public void emptyGrid() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 grid[i][j] = -1;
@@ -14,10 +17,8 @@ public class Enter {
         }
     }
 
-    int[] xy = new int[2];
-
-
     public int[] enterCoordinate() {
+        int[] xy = new int[2];
         while (true) {
             Random random = new Random();
             int x = random.nextInt(10);
@@ -38,11 +39,16 @@ public class Enter {
                 String symbol = "-";
                 if (grid[i][j] == 1) {
                     symbol = "+";
+                }else if (grid[i][j] == 0){
+                    symbol = "X";
                 }
-                System.out.print(symbol+" ");
+                System.out.print(symbol + " ");
             }
             System.out.println();
         }
+    }
+    public void setAHit(int [] xy){
+        grid[xy[0]][xy[1]] = 0;
     }
 
 }
