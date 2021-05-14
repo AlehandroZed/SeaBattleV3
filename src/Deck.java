@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Deck {
@@ -10,8 +11,8 @@ public class Deck {
 
 
 
-    public void setCoordinates() {
-        coordinates = new Enter().enterCoordinate();
+    public void setCoordinates(int [] coordinates) {
+        this.coordinates = coordinates;
     }
 
 
@@ -19,6 +20,11 @@ public class Deck {
         return coordinates;
     }
 
-
+    @Override
+    public String toString() {
+        return "Deck{" +
+                "coordinates=" + Arrays.toString(coordinates) +
+                '}';
+    }
 }
 

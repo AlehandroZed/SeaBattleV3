@@ -2,11 +2,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Enter {
-    static int SIZE = 10;
-    static int[][] grid = new int[SIZE][SIZE];
+     int SIZE = 10;
+     int[][] grid = new int[SIZE][SIZE];
     ArrayList<Integer[][]> e = new ArrayList<>();
 
-    static {
+    public void newGrid() {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 grid[i][j] = -1;

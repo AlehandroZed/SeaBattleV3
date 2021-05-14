@@ -9,16 +9,18 @@ public class Game {
     int[] numberOfDeckAtShipList = new int[]{4, 3, 3, 2, 2, 2, 1, 1, 1, 1};
     List<String> namesShipList = new ArrayList<>(Arrays.asList("Black Perl", "Titanic", "Aurora", "Pharaoh", "beda", "Duncan", "Nautilus", "Pilgrim", "Secret", "Ghost"));
 
-    private void setUpGame() {
+    private void setUpGame(Enter enter) {
         for (int i = 0; i < 10; i++) {
             Ship ship = new Ship();
-            ship.setLocationDeck(numberOfDeckAtShipList[i]);
+            ship.setLocationDeck(numberOfDeckAtShipList[i], enter);
+            System.out.println(ship.decks.toString());
             ship.setName(namesShipList.get(random.nextInt(namesShipList.size())));
             fleet.add(ship);
         }
         fleet.get(8).decks.get(0).coordinates = new int[]{2, 2};// один корабль с координатами 2,2//TEST
         fleet.get(5).decks.get(0).coordinates = new int[]{7, 5};// один корабль с координатами 2,2//TEST
         fleet.get(5).decks.get(1).coordinates = new int[]{8, 5};// один корабль с координатами 2,2//TEST
+
 
     }
 
@@ -69,7 +71,8 @@ public class Game {
         System.out.println("\n----------------------------Player 1\n");
         Game gamePlayer1 = new Game();
         Enter enterPlayer1 = new Enter();
-        gamePlayer1.setUpGame();
+        enterPlayer1.newGrid();
+        gamePlayer1.setUpGame(enterPlayer1);
         gamePlayer1.startPlaying();
         gamePlayer1.printGame();
         enterPlayer1.printGrid();
@@ -77,7 +80,8 @@ public class Game {
         System.out.println("\n-----------------------------Player 2\n");
         Game gamePlayer2 = new Game();
         Enter enterPlayer2 = new Enter();
-        gamePlayer2.setUpGame();
+        enterPlayer2.newGrid();
+        gamePlayer2.setUpGame(enterPlayer2);
         gamePlayer2.startPlaying();
         gamePlayer2.printGame();
         enterPlayer2.printGrid();

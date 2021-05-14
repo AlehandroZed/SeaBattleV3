@@ -10,10 +10,12 @@ public class Ship {
         this.name = name;
     }
 
-    public void setLocationDeck(int numberOfDecks) {
+    public void setLocationDeck(int numberOfDecks,Enter enter) {
         for (int i = 0; i < numberOfDecks; i++) {
             Deck deck = new Deck();
-            deck.setCoordinates();
+            int  []tmp = enter.enterCoordinate();
+            System.out.println(Arrays.toString(tmp));
+            deck.setCoordinates(tmp);
             decks.add(deck);
         }
     }
